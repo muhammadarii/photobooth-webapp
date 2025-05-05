@@ -15,7 +15,7 @@ const HomePage = () => {
         </div>
       </div>
       <div
-        style={{ position: "relative", height: "400px" }}
+        style={{ position: "relative", height: "410px" }}
         className="cursor-pointer"
       >
         <TextPressure
@@ -56,7 +56,7 @@ const HomePage = () => {
         className="mt-10"
       >
         <p className="text-center font-semibold">
-          muhammadari / juliana putri / riibooth / thank you /
+          take your photos with us/it&apos;s free/riibooth/thank you/
         </p>
       </Marquee>
     </div>
