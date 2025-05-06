@@ -19,7 +19,7 @@ const HomePage = () => {
         className="cursor-pointer"
       >
         <TextPressure
-          text="Riibooth"
+          text="riibooth"
           flex={true}
           alpha={false}
           stroke={false}
