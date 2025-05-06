@@ -1,5 +1,6 @@
 "use client";
 import Camera from "@/components/parts/Camera";
+import Gallery from "@/components/parts/Gallery";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { redirect } from "next/navigation";
@@ -18,6 +19,7 @@ export default function PhotoboothPage() {
       </Button>
       <div className="grid grid-cols-2 mt-10 gap-4">
         <Camera />
+        <Gallery />
       </div>
     </div>
   );
