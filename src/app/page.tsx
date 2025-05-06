@@ -28,7 +28,7 @@ const HomePage = () => {
           italic={true}
           textColor="#000000"
           strokeColor="#ff0000"
-          minFontSize={400}
+          minFontSize={380}
         />
         <div className="animate-pulse">
           <p className="text-center">digital photobooth by muhammad ari</p>

@@ -34,6 +34,7 @@ const Camera = () => {
 
   return (
     <div>
+      <p>riibooth by@muhammadari</p>
       <video
         ref={videoRef}
         autoPlay
