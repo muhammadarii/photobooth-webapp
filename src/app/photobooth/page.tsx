@@ -1,8 +1,8 @@
 "use client";
-
 import Camera from "@/components/parts/Camera";
 import Gallery from "@/components/parts/Gallery";
 import { Button } from "@/components/ui/button";
+import { useImageStore } from "@/store/useStore";
 import { ArrowLeft } from "lucide-react";
 import { redirect } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -12,7 +12,8 @@ export default function PhotoboothPage() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [photosCount, setPhotosCount] = useState<string>("4");
   const [countdown, setCountdown] = useState<string>("3");
-  const [capturedImages, setCapturedImages] = useState<string[]>([]);
+
+  const { setCapturedImages, capturedImages } = useImageStore(); // Access capturedImages from store
 
   useEffect(() => {
     const videoElement = videoRef.current;
@@ -61,22 +62,9 @@ export default function PhotoboothPage() {
     }
 
     setCapturedImages(images);
-  };
-
-  const handlePrint = () => {
-    const win = window.open();
-    if (!win) return;
-
-    win.document.write("<html><body>");
-    capturedImages.forEach((img) => {
-      win.document.write(
-        `<img src="${img}" style="max-width: 100%; margin-bottom: 10px;" />`
-      );
-    });
-    win.document.write("</body></html>");
-    win.document.close();
-    win.focus();
-    win.print();
+    if (images.length > 0) {
+      localStorage.setItem("capturedImages", JSON.stringify(images));
+    }
   };
 
   return (
@@ -100,7 +88,7 @@ export default function PhotoboothPage() {
           canvasRef={canvasRef}
           handleCapture={handleCapture}
         />
-        <Gallery capturedImages={capturedImages} handlePrint={handlePrint} />
+        <Gallery capturedImages={capturedImages} handlePrint={handleCapture} />
       </div>
     </div>
   );
