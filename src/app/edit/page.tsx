@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import html2canvas from "html2canvas";
 import { useImageStore } from "@/store/useStore";
+import html2canvas from "html2canvas";
 
 export default function EditPage() {
   const [images, setImages] = useState<string[]>([]);
@@ -28,20 +28,16 @@ export default function EditPage() {
     }
   }, [capturedImages]);
 
-  const handleDownload = async () => {
-    if (!captureRef.current) return;
-    const canvas = await html2canvas(captureRef.current, {
-      useCORS: true,
-      scale: 2,
-    });
-
-    const fileName = title
-      ? `${title.replace(/\s+/g, "-")}.png`
-      : "photo-collage.png";
-    const link = document.createElement("a");
-    link.download = fileName;
-    link.href = canvas.toDataURL("image/png");
-    link.click();
+  const handleDownload = () => {
+    const captureElement = captureRef.current;
+    if (captureElement) {
+      html2canvas(captureElement).then((canvas) => {
+        const link = document.createElement("a");
+        link.download = "event_photos.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      });
+    }
   };
 
   return (
