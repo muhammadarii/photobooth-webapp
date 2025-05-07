@@ -1,4 +1,4 @@
-import Gallery from "@/components/parts/Gallery";
+// import Gallery from "@/components/parts/Gallery";
 import Link from "next/link";
 
 export default function GalleryPage() {
@@ -15,7 +15,7 @@ export default function GalleryPage() {
           </Link>
         </div>
 
-        <Gallery />
+        {/* <Gallery /> */}
       </div>
     </div>
   );
